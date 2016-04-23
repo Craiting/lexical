@@ -6,10 +6,9 @@ uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"
 
 digit = ["1","2","3","4","5","6","7","8","9","0","_"]
 
+#pass in a string, if all characters are found in 3 arrays above it will be true
 def is_ID(a):
 	k =  all(i in digit or uppercase or lowercase for i in a)
 	if k:
    		print '(ID "%s")' % a
 	return k
-	
-is_ID("landf")
