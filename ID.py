@@ -8,6 +8,21 @@ digit = ["1","2","3","4","5","6","7","8","9","0","_"]
 
 #pass in a string, if all characters are found in 3 arrays above it will be true
 def is_ID(a):
+    try:
+        a.index('"')
+        return False
+    except:
+        pass
+    try:
+        a.index("'")
+        return False
+    except:
+        pass
+    try:
+        int(a[0])
+        return False
+    except:
+        pass
 	k =  all(i in digit or uppercase or lowercase for i in a)
 	if k:
    		print '(ID "%s")' % a

@@ -1,4 +1,9 @@
 import re
+from punct import is_punc
+from keywords import is_keyword
+from ID import is_ID
+
+
 myfile = raw_input()
 
 fin = open(myfile, 'r')
@@ -46,4 +51,13 @@ def get_strings(words):
 for line in lines:
     tokens = breakup_line(line)
     final = get_strings(tokens)
-    print final
+    for item in final:
+        if is_punc(item):
+            pass
+        elif is_keyword(item):
+            pass
+        elif is_ID(item):
+            pass
+        else:
+            print "(LIT %s)" % item
+print "(ENDMARKER)"
