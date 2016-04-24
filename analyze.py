@@ -12,17 +12,14 @@ lines = fin.readlines()
 
 def breakup_line(line):
     words = line.split()
+    newwords = []
     for i in range(len(words)):
         if words[i][0] in ("'",'"') and words[i][-1] in ("'",'"'): # don't break strings
-            pass
+            newwords.append(words[i])
         else: # break up further based on punctuation
-            print 'w', words[i]
             t = re.findall(r"[\w]+|[^\s\w]|[-:\w]", words[i])
-            print 't', t
-            if len(t) > 1:
-                words.remove(words[i])
-                words[i:i] = t
-    return words
+            newwords.extend(t)
+    return newwords
             
 def get_strings(words):
     new_words = []
