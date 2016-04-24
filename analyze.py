@@ -16,7 +16,9 @@ def breakup_line(line):
         if words[i][0] in ("'",'"') and words[i][-1] in ("'",'"'): # don't break strings
             pass
         else: # break up further based on punctuation
-            t = re.findall(r"[\w]+|[^\s\w]", words[i])
+            print 'w', words[i]
+            t = re.findall(r"[\w]+|[^\s\w]|[-:\w]", words[i])
+            print 't', t
             if len(t) > 1:
                 words.remove(words[i])
                 words[i:i] = t
