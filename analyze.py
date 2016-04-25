@@ -1,5 +1,6 @@
 import re
 from punct import is_punc
+from punct import puncList
 from keywords import is_keyword
 from ID import is_ID
 
@@ -44,11 +45,26 @@ def get_strings(words):
                 new_words.append(w)
     return new_words
             
-            
+def get_double_punc(words):
+    new_punc = []
+    adding = False
+    tmpstring = ''
+    size = len(words)
+
+    skip = False
+    for w in words:
+        if w in puncList and w < size+1:   
+            while w[+1] in puncList:
+                new_punc.append(w[+1])
+                w=w+1
+        else:
+            new_punc.append(w)
+    return new_punc
             
 
 for line in lines:
     tokens = breakup_line(line)
+    punc = get_double_punc(tokens)
     final = get_strings(tokens)
     for item in final:
         if is_punc(item):
