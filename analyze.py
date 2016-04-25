@@ -45,34 +45,28 @@ def get_strings(words):
                 new_words.append(w)
     return new_words
             
-def get_double_punc(words):
-    new_punc = []
-    adding = False
-    tmpstring = ''
-    size = len(words)
 
-    skip = False
-    for w in words:
-        if w in puncList and w < size+1:   
-            while w[+1] in puncList:
-                new_punc.append(w[+1])
-                w=w+1
-        else:
-            new_punc.append(w)
-    return new_punc
-            
-
+skip = False
 for line in lines:
-    tokens = breakup_line(line)
-    punc = get_double_punc(tokens)
-    final = get_strings(tokens)
-    for item in final:
-        if is_punc(item):
-            pass
-        elif is_keyword(item):
-            pass
-        elif is_ID(item):
-            pass
-        else:
-            print "(LIT %s)" % item
+        tokens = breakup_line(line)
+        final = get_strings(tokens)
+        for c, item in enumerate(final):
+            if not skip:
+                if is_punc(item):
+                    try:
+                        if is_punc(item + final[c+1]):
+                            print '(PUNC "%s")' % str(item + final[c+1])
+                            skip = True
+                        else:
+                            print '(PUNC "%s")' % item 
+                    except:
+                        print '(PUNC "%s")' % item 
+                elif is_keyword(item):
+                    pass
+                elif is_ID(item):
+                    pass
+                else:
+                    print "(LIT %s)" % item
+            else:
+                skip = False  
 print "(ENDMARKER)"
