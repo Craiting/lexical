@@ -12,14 +12,14 @@ and the output will be the lexical analysis of the python file example.py. You c
 to get the lexical analysis.
 
 ### Working
-Lexical Analysis
-Empty input file handling
-File doesn't exist handling
-Finds strings of any length
-Correctly handles comments on their own line or a line with code
-Punctuation is found
-Keywords are found
-ID's are found
+* Lexical Analysis
+* Empty input file handling
+* File doesn't exist handling
+* Finds strings of any length
+* Correctly handles comments on their own line or a line with code
+* Punctuation is found
+* Keywords are found
+* ID's are found
 
 ### Still Working On
-Getting ID lexical errors
+* Getting ID lexical errors
