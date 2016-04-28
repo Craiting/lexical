@@ -7,9 +7,16 @@ from ID import is_ID
 
 myfile = raw_input()
 
-fin = open(myfile, 'r')
+try:
+    fin = open(myfile, 'r')
+except:
+    print "Input file does not exists: %s" % myfile
+    quit(0)
 
 lines = fin.readlines()
+if len(lines) <= 0:
+    print "Input file %s is empty" % myfile 
+    quit(0)
 
 def breakup_line(line):
     words = line.split()
