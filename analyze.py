@@ -13,6 +13,8 @@ except:
     print "Input file does not exists: %s" % myfile
     quit(0)
 
+
+
 lines = fin.readlines()
 if len(lines) <= 0:
     print "Input file %s is empty" % myfile 
@@ -35,7 +37,7 @@ def get_strings(words):
     tmpstring = ''
     skip = False
     for w in words:
-        if '"' in w or "'" in w:
+        if ('"' in w or "'" in w) and (w.count('"') < 2 and w.count("'") < 2):
             adding = not adding
         if not adding:
             new_words.append(tmpstring+w)

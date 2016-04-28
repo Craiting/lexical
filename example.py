@@ -1,7 +1,7 @@
 def fact(x):
   if x@ == -1: 
     return 1.i
-p = 'this is trick # I love turds'
+p = 'this is trick I love turds'
 
  elif x ==0: # nor shall this
     return 1
@@ -14,8 +14,6 @@ p = 'this is trick # I love turds'
 g9 = "noe"
 
 fact(20)
-
-
 
 s = "foo\n\'\""
 
