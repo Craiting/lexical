@@ -28,12 +28,10 @@ def get_strings(words):
     tmpstring = ''
     skip = False
     for w in words:
-        if w in ("'",'"'):
-            adding = True
-        elif w[-1] in ('"',"'"):
-            adding = False
-            tmpstring += w + ' '
-            new_words.append(tmpstring)
+        if '"' in w or "'" in w:
+            adding = not adding
+        if not adding:
+            new_words.append(tmpstring+w)
             tmpstring = ''
             skip = True
         if adding:
@@ -49,13 +47,7 @@ def get_strings(words):
 skip = False
 for line in lines:
     if '#' in line:
-        if line.count("'") >= 2 and (line.index("'") < line.index('#') < line.index("'", line.index("'")+1)):
-            pass
-        elif line.count('"') >= 2 and (line.index('"') < line.index('#') < line.index('"', line.index('"')+1)):
-            pass
-        else:
-            line = line[:line.index('#')]
-
+        line = line[:line.index('#')]
     tokens = breakup_line(line)
     final = get_strings(tokens)
     for c, item in enumerate(final):
