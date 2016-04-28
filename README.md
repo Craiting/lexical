@@ -1,4 +1,4 @@
-# lexical
+# Lexical Analyzer
 lexical analyzer for python in python
 
 ### Dependencies
