@@ -1,16 +1,20 @@
 def fact(x):
   if x@ == -1: 
     return 1.i
+p = 'this is trick # I love turds'
 
- elif x ==0:
+	elif x ==0:
     return 1
    else:
     return x* fact(x - 1)
 k = 3; 
- s = "foo\n\'\""
+ s = 'foo\n\'\"'
+ k = "another"
 
- fact(20)
+g9 = "noe"
 
-p = "this is trick # I love turds"
+fact(20)
+
+
 
 bigfart = 12
