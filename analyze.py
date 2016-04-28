@@ -48,25 +48,33 @@ def get_strings(words):
 
 skip = False
 for line in lines:
-        tokens = breakup_line(line)
-        final = get_strings(tokens)
-        for c, item in enumerate(final):
-            if not skip:
-                if is_punc(item):
-                    try:
-                        if is_punc(item + final[c+1]):
-                            print '(PUNC "%s")' % str(item + final[c+1])
-                            skip = True
-                        else:
-                            print '(PUNC "%s")' % item 
-                    except:
+    if '#' in line:
+        if line.count("'") >= 2 and (line.index("'") < line.index('#') < line.index("'", line.index("'")+1)):
+            pass
+        elif line.count('"') >= 2 and (line.index('"') < line.index('#') < line.index('"', line.index('"')+1)):
+            pass
+        else:
+            line = line[:line.index('#')]
+
+    tokens = breakup_line(line)
+    final = get_strings(tokens)
+    for c, item in enumerate(final):
+        if not skip:
+            if is_punc(item):
+                try:
+                    if is_punc(item + final[c+1]):
+                        print '(PUNC "%s")' % str(item + final[c+1])
+                        skip = True
+                    else:
                         print '(PUNC "%s")' % item 
-                elif is_keyword(item):
-                    pass
-                elif is_ID(item):
-                    pass
-                else:
-                    print "(LIT %s)" % item
+                except:
+                    print '(PUNC "%s")' % item 
+            elif is_keyword(item):
+                pass
+            elif is_ID(item):
+                pass
             else:
-                skip = False  
+                print "(LIT %s)" % item
+        else:
+            skip = False  
 print "(ENDMARKER)"
